@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./sass/masonry-gallery.scss" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a class="link" href="index.html">Go back</a>
+    <form class="search-form" id="search-form">
+      <input
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        required
+        placeholder="Search images..."
+        autofocus
+      />
+      <button type="submit">🔎</button>
+    </form>
+    <div class="gallery">
+      <div class="grid are-images-unloaded">
+        <div class="grid-sizer"></div>
+      </div>
+    </div>
+    <div class="loader">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+
+    <script
+      type="module"
+      src="./js/masonry-gallery/masonry-gallery.js"
+    ></script>
+  </body>
+</html>
