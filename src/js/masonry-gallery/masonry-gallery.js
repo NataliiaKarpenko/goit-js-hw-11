@@ -4,6 +4,7 @@ import imagesLoaded from 'imagesloaded';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import throttle from 'lodash.throttle';
 import { PixabayAPI } from './pixabay-api-masonry-gallery';
 import { createGallery } from './create-masonry-gallery';
 
@@ -13,6 +14,7 @@ const inputRef = document.querySelector('input');
 const loaderRef = document.querySelector('.loader');
 
 const pixabayApi = new PixabayAPI();
+const lightBox = new SimpleLightbox('.gallery a');
 
 let msnry;
 
@@ -47,7 +49,7 @@ async function onSearchFormSubmit(e) {
 
     imagesLoaded(gridRef, makeUpMasonry);
 
-    new SimpleLightbox('.gallery a');
+    lightBox.refresh();
   } catch (err) {
     console.log(err);
   }
@@ -73,9 +75,8 @@ async function onWindowScroll(e) {
       setTimeout(() => {
         gridRef.insertAdjacentHTML('beforeend', createGallery(data.hits));
         imagesLoaded(gridRef, makeUpMasonry);
+        lightBox.refresh();
       }, 500);
-
-      new SimpleLightbox('.gallery a').refresh();
 
       showLoading();
     } catch (err) {
