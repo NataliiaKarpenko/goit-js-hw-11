@@ -32,11 +32,16 @@ async function onSearchFormSubmit(e) {
     const { data } = response;
 
     if (data.hits.length === 0) {
+      // e.target.reset();
+      // gridRef.reset();
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
+      gridRef.innerHTML = '';
 
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 600);
 
       return;
     }
