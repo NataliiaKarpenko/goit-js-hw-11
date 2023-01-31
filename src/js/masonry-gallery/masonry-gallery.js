@@ -34,8 +34,8 @@ async function onSearchFormSubmit(e) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
-      e.target.reset();
-      gridRef.innerHTML = '';
+
+      window.location.reload();
 
       return;
     }
